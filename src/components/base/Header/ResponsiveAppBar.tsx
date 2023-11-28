@@ -1,161 +1,136 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import { useState } from 'react';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { AppBar, Toolbar, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Drawer, IconButton, Button } from '@mui/material';
+import { Menu } from '@mui/icons-material';
 
-export const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+type Props = {
+  window?: () => Window;
+}
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+const drawerWidth = 240;
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+const navItems = [
+  {title: 'Top', link: '#'},
+  {title: 'About this site', link: '#'},
+  {title: 'Profile', link: '#'},
+  {title: 'Works', link: '#'},
+  {title: 'Contact me', link: '#'},
+]
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+export const ResponsiveAppBar = (props: Props) => {
+
+  const { window } = props;
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <List>
+        {navItems.map((item, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={item.title} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <>
+      <AppBar component="nav" position="static">
+      <Toolbar sx={{ width: { xs: '80%', sm: '70%' }, margin: '0 auto'}}>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { sm: 'none' }, float: 'left' }}
+        >
+          <Menu />
+        </IconButton>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+        >
+          Desktop
+        </Typography>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ display: { xs: 'inline-block', sm: 'none' }, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
+        >
+          Mobile
+        </Typography>
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          {navItems.map((item, index) => (
+            <Button key={index} sx={{ color: '#fff' }}>
+              {item.title}
+            </Button>
+          ))}
+        </Box>
+      </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </nav>
+      {/* <Box component="main" sx={{ p: 3 }}>
+        <Toolbar />
+        <Typography>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
+          fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
+          aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
+          cum quibusdam sed quae, accusantium et aperiam? Quod itaque exercitationem,
+          at ab sequi qui modi delectus quia corrupti alias distinctio nostrum.
+          Minima ex dolor modi inventore sapiente necessitatibus aliquam fuga et. Sed
+          numquam quibusdam at officia sapiente porro maxime corrupti perspiciatis
+          asperiores, exercitationem eius nostrum consequuntur iure aliquam itaque,
+          assumenda et! Quibusdam temporibus beatae doloremque voluptatum doloribus
+          soluta accusamus porro reprehenderit eos inventore facere, fugit, molestiae
+          ab officiis illo voluptates recusandae. Vel dolor nobis eius, ratione atque
+          soluta, aliquam fugit qui iste architecto perspiciatis. Nobis, voluptatem!
+          Cumque, eligendi unde aliquid minus quis sit debitis obcaecati error,
+          delectus quo eius exercitationem tempore. Delectus sapiente, provident
+          corporis dolorum quibusdam aut beatae repellendus est labore quisquam
+          praesentium repudiandae non vel laboriosam quo ab perferendis velit ipsa
+          deleniti modi! Ipsam, illo quod. Nesciunt commodi nihil corrupti cum non
+          fugiat praesentium doloremque architecto laborum aliquid. Quae, maxime
+          recusandae? Eveniet dolore molestiae dicta blanditiis est expedita eius
+          debitis cupiditate porro sed aspernatur quidem, repellat nihil quasi
+          praesentium quia eos, quibusdam provident. Incidunt tempore vel placeat
+          voluptate iure labore, repellendus beatae quia unde est aliquid dolor
+          molestias libero. Reiciendis similique exercitationem consequatur, nobis
+          placeat illo laudantium! Enim perferendis nulla soluta magni error,
+          provident repellat similique cupiditate ipsam, et tempore cumque quod! Qui,
+          iure suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
+          Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore commodi
+          reprehenderit rerum reiciendis! Quidem alias repudiandae eaque eveniet
+          cumque nihil aliquam in expedita, impedit quas ipsum nesciunt ipsa ullam
+          consequuntur dignissimos numquam at nisi porro a, quaerat rem repellendus.
+          Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
+          dolores sunt inventore perferendis, aut sapiente modi nesciunt.
+        </Typography>
+      </Box> */}
+    </>
   );
 };
