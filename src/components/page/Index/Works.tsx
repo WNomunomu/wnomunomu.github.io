@@ -10,6 +10,7 @@ type Work = {
   images: string[],
   title: string,
   text: string,
+  tech: string[],
 }
 
 type Props = {
@@ -18,10 +19,17 @@ type Props = {
 
 const works: Work[] = [
   {
-    mainImage: '/works/Marronnier/Marronnier.jpg',
-    images: [],
+    mainImage: '/works/Marronnier/第二次GPA資料/スライド1.jpg',
+    images: [
+      '/works/Marronnier/第二次GPA資料/スライド1.jpg',
+      '/works/Marronnier/第二次GPA資料/スライド8.jpg',
+      '/works/Marronnier/第二次GPA資料/スライド10.jpg',
+      '/works/Marronnier/第二次GPA資料/スライド11.jpg',
+      '/works/Marronnier/第二次GPA資料/スライド16.jpg',
+    ],
     title: '蛟龍祭入場管理システムMarronnier',
-    text: '',
+    text: '県立前橋高校在学中に開発した文化祭入場管理システム。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできる。',
+    tech: ['HTML', 'CSS', 'JS', 'Python', 'Django', 'MySQL', 'GCP']
   }
 ];
 
@@ -29,7 +37,7 @@ const WorksCard = (props: Props) => {
 
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const { mainImage, images, title, text } = props.work;
+  const { mainImage, images, title, text, tech } = props.work;
 
   return (
     <>
@@ -45,6 +53,7 @@ const WorksCard = (props: Props) => {
           images={images}
           title={title}
           text={text}
+          tech={tech}
           setModalOpen={setModalOpen}
         />
       }
