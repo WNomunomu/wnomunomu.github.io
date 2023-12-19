@@ -1,0 +1,14 @@
+.top-banner-container {
+  background-color: #3E5E98;
+  height: calc(100vh - 64px);
+  min-height: 400px;
+}
+
+.about-this-site {
+  height: 100vh;
+  background-color: cadetblue;
+}
+
+.about-me {
+  height: 100vh;
+}
