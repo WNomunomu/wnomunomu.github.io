@@ -43,7 +43,7 @@ export const ResponsiveAppBar = (props: Props) => {
 
   return (
     <>
-      <AppBar component="nav" position="static" color='default'>
+      <AppBar component="nav" position="sticky" color='default'>
         <Toolbar sx={{ width: { xs: '80%', sm: '70%' }, margin: '0 auto'}}>
           <IconButton
             aria-label="open drawer"
