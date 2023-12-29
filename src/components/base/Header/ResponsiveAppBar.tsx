@@ -17,82 +17,106 @@ const navItems = [
   {title: 'Contact me', link: '#'},
 ]
 
-export const ResponsiveAppBar = (props: Props) => {
+// export const ResponsiveAppBar = (props: Props) => {
 
-  const { window } = props;
+//   const { window } = props;
 
-  const [mobileOpen, setMobileOpen] = useState(false);
+//   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+//   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <List>
-        {navItems.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+//   const drawer = (
+//     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+//       <List>
+//         {navItems.map((item, index) => (
+//           <ListItem key={index} disablePadding>
+//             <ListItemButton sx={{ textAlign: 'center' }}>
+//               <ListItemText primary={item.title} />
+//             </ListItemButton>
+//           </ListItem>
+//         ))}
+//       </List>
+//     </Box>
+//   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+//   const container = window !== undefined ? () => window().document.body : undefined;
 
+//   return (
+//     <>
+//       <AppBar component="nav" position="sticky" color='default'>
+//         <Toolbar sx={{ width: { xs: '80%', sm: '70%' }, margin: '0 auto'}}>
+//           <IconButton
+//             aria-label="open drawer"
+//             edge="start"
+//             onClick={handleDrawerToggle}
+//             sx={{ mr: 2, display: { sm: 'none' }, float: 'left' }}
+//           >
+//             <Menu />
+//           </IconButton>
+//           <Typography
+//             variant="h6"
+//             component="div"
+//             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+//           >
+//             Desktop
+//           </Typography>
+//           <Typography
+//             variant="h6"
+//             component="div"
+//             sx={{ display: { xs: 'inline-block', sm: 'none' }, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
+//           >
+//             Mobile
+//           </Typography>
+//           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+//             {navItems.map((item, index) => (
+//               <Button key={index} sx={{ color: '#000' }}>
+//                 {item.title}
+//               </Button>
+//             ))}
+//           </Box>
+//         </Toolbar>
+//       </AppBar>
+//       <nav>
+//         <Drawer
+//           container={container}
+//           variant="temporary"
+//           open={mobileOpen}
+//           onClose={handleDrawerToggle}
+//           ModalProps={{
+//             keepMounted: true, // Better open performance on mobile.
+//           }}
+//           sx={{
+//             display: { xs: 'block', sm: 'none' },
+//             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+//           }}
+//         >
+//           {drawer}
+//         </Drawer>
+//       </nav>
+//     </>
+//   );
+// };
+
+
+export const ResponsiveAppBar = () => {
   return (
     <>
-      <AppBar component="nav" position="sticky" color='default'>
-        <Toolbar sx={{ width: { xs: '80%', sm: '70%' }, margin: '0 auto'}}>
-          <IconButton
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' }, float: 'left' }}
-          >
-            <Menu />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Desktop
-          </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ display: { xs: 'inline-block', sm: 'none' }, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
-          >
-            Mobile
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item, index) => (
-              <Button key={index} sx={{ color: '#000' }}>
-                {item.title}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
+      <div>
+        <div className="mx-auto row" style={{ width: '70%' }}>
+          <div className="col-6">
+            <div className="d-inline-block p-3">logo</div>
+          </div>
+          <div className="col-6">
+            <div className="d-flex flex-row justify-content-end">
+              {navItems.map((items, index) => (
+                <div className="p-3 fs-5" key={index}>
+                  <div>{items.title}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
