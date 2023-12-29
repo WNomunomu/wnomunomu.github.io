@@ -1,14 +1,24 @@
-.top-banner-container {
-  background-color: #3E5E98;
-  height: calc(100vh - 64px);
+.top-banner {
+  background-color: rgb(144, 202, 249);
+  height: calc(100vh);
   min-height: 400px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
 }
 
 .about-this-site {
-  height: 100vh;
-  background-color: cadetblue;
+  /* clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%); */
 }
 
 .about-me {
   height: 100vh;
+}
+
+.button {
+  background-color: rgb(100, 181, 246);
+}
+
+.button:hover {
+  background-color: rgb(144, 202, 249);
 }
