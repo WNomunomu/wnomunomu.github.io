@@ -80,12 +80,18 @@ const WorksCard = (props: Props) => {
 
   return (
     <>
-      <div className="col-md-4 my-2">
+      <div className="col-md-4 my-4">
         <div className="card">
           <img src={mainImage} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
-            <button onClick={() => setModalOpen(true)} className="btn btn-primary">詳細</button>
+            <button
+              className={`${styles['button']} fs-6 text-light border-0 py-2 px-3 rounded`}
+              type="button"
+              onClick={() => setModalOpen(true)}
+            >
+                詳細
+            </button>
           </div>
         </div>
         {isModalOpen &&
@@ -104,9 +110,9 @@ const WorksCard = (props: Props) => {
 
 export const Works = () => {
   return (
-    <div className="text-center bg-body vh-100">
+    <div className="text-center bg-body py-4">
       <div className="mx-auto" style={{ width: '70%' }}>
-        <div className="fs-1 fw-bold mt-3">Works</div>
+        <div className="fs-1 fw-bold">Works</div>
         <div className="fs-5">作品など</div>
         <div className="row">
           {works.map((work, index) => <WorksCard key={index} work={work} />)}
