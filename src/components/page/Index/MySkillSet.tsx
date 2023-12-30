@@ -71,7 +71,7 @@ const skillSet = [
   {
     type: 'others',
     title: 'Google Cloud',
-    icon: 'devicon-googlecloud-plain-wordmark colored'
+    icon: 'devicon-googlecloud-plain colored'
   },
 ]
 
