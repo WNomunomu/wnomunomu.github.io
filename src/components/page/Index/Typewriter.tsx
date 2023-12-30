@@ -14,7 +14,7 @@ export const Typewriter: FC<Props> = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (currentIndex < text.length - 1) {
+      if (currentIndex < text.length) {
         setCurrentIndex(currentIndex + 1);
       }
     }, speed);
