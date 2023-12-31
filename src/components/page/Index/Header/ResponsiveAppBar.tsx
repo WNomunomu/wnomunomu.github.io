@@ -81,7 +81,7 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
               </span>
               { isOpen && (
                 <div
-                  className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 w-25 p-3"
+                  className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 p-3"
                   ref={menuRef}
                 >
                   {navItems.map((items, index) => (

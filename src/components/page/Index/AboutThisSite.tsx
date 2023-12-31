@@ -2,7 +2,6 @@ import { FC } from 'react';
 import type { MutableRefObject } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './indexPage.module.css'
 
 type Props = {
   aboutThisSiteRef: MutableRefObject<HTMLDivElement | null>
@@ -14,10 +13,10 @@ export const AboutThisSite: FC<Props> = (props) => {
 
   return (
     <div
-      className={`${styles['about-this-site']} text-center vh-100 bg-body d-flex align-items-center justify-content-center`}
+      className="text-center vh-100 bg-body d-flex align-items-center justify-content-center"
       ref={aboutThisSiteRef}
     >
-      <div className='content'>
+      <div className='mx-auto col-lg-6 col-sm-8 col-8'>
         <div className="fs-1 fw-bold">About this site</div>
         <div className="fs-5">
           <div>ここはエンジニアNomuのポートフォリオサイトです。</div>
