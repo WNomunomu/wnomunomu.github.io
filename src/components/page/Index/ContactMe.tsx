@@ -1,10 +1,23 @@
+import { FC } from 'react';
+import type { MutableRefObject } from 'react';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { ContactForm } from './ContactForm';
 
-export const ContactMe = () => {
+type Props = {
+  contactMeRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export const ContactMe: FC<Props> = (props) => {
+
+  const { contactMeRef } = props;
+
   return (
-    <div className="vh-100 bg-body d-flex align-items-center justify-content-center">
+    <div
+      className="vh-100 bg-body d-flex align-items-center justify-content-center"
+      ref={contactMeRef}
+    >
       <div className="mx-auto" style={{ width: '50%' }}>
         <div className="fs-1 fw-bold text-center">Contact me</div>
         <div className="fs-5 mb-4">

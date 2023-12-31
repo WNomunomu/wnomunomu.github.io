@@ -1,21 +1,27 @@
-import { useState } from 'react';
+import { FC } from 'react';
+import type { MutableRefObject } from 'react';
 
 import { AppBar, Toolbar, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Drawer, IconButton, Button } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
-type Props = {
-  window?: () => Window;
+export type Props = {
+  topBannerRef: MutableRefObject<HTMLDivElement | null>
+  aboutThisSiteRef: MutableRefObject<HTMLDivElement | null>
+  aboutMeRef: MutableRefObject<HTMLDivElement | null>
+  worksRef: MutableRefObject<HTMLDivElement | null>
+  mySkillSetRef: MutableRefObject<HTMLDivElement | null>
+  contactMeRef: MutableRefObject<HTMLDivElement | null>
 }
 
 const drawerWidth = 240;
 
-const navItems = [
-  {title: 'Top', link: '#'},
-  {title: 'About this site', link: '#'},
-  {title: 'Profile', link: '#'},
-  {title: 'Works', link: '#'},
-  {title: 'Contact me', link: '#'},
-]
+export const scrollToComponent = (ref: MutableRefObject<HTMLDivElement | null>) => {
+  if (ref.current == null) {
+    return;
+  }
+
+  ref.current.scrollIntoView();
+}
 
 // export const ResponsiveAppBar = (props: Props) => {
 
@@ -98,19 +104,33 @@ const navItems = [
 // };
 
 
-export const ResponsiveAppBar = () => {
+export const ResponsiveAppBar: FC<Props> = (props) => {
+
+  const {
+    topBannerRef, aboutThisSiteRef, aboutMeRef, worksRef, mySkillSetRef, contactMeRef,
+  } = props;
+
+  const navItems = [
+    {title: 'Top', ref: topBannerRef},
+    {title: 'About this site', ref: aboutThisSiteRef},
+    {title: 'About me', ref: aboutMeRef},
+    {title: 'Works', ref: worksRef},
+    {title: 'SkillSet', ref: mySkillSetRef},
+    {title: 'Contact me', ref: contactMeRef},
+  ]
+
   return (
     <>
-      <div>
+      <div className="fixed-top">
         <div className="mx-auto row" style={{ width: '70%' }}>
           <div className="col-6">
-            <div className="d-inline-block p-3">logo</div>
+            <div className="d-inline-block p-3"></div>
           </div>
           <div className="col-6">
             <div className="d-flex flex-row justify-content-end">
               {navItems.map((items, index) => (
-                <div className="p-3 fs-5" key={index}>
-                  <div>{items.title}</div>
+                <div className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}>
+                  <div onClick={() => scrollToComponent(items.ref)}>{items.title}</div>
                 </div>
               ))}
             </div>

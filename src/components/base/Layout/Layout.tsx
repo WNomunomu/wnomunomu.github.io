@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Header } from '../Header';
-import { Footer } from '../Footer';
+import { Footer } from '../../page/Index/Footer';
 
 type Props = {
   children: ReactNode
@@ -16,7 +15,6 @@ export const Layout = ({ children }: Props) => {
           padding: 0px;
         }
       `}</style>
-      <Header />
       <main>{children}</main>
       <Footer />
     </>

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
+import type { MutableRefObject } from 'react';
 
 import { WorksModal } from './WorksModal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './indexPage.module.css';
 
 type Work = {
   mainImage: string,
@@ -13,8 +13,12 @@ type Work = {
   tech: string[],
 }
 
-type Props = {
+type WorksCardProps = {
   work: Work,
+}
+
+type WorksProps = {
+  worksRef: MutableRefObject<HTMLDivElement | null>
 }
 
 const works: Work[] = [
@@ -72,7 +76,7 @@ const works: Work[] = [
   },
 ];
 
-const WorksCard = (props: Props) => {
+const WorksCard = (props: WorksCardProps) => {
 
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -86,7 +90,7 @@ const WorksCard = (props: Props) => {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <button
-              className={`${styles['button']} fs-6 text-light border-0 py-2 px-3 rounded`}
+              className='button fs-6 text-light border-0 py-2 px-3 rounded'
               type="button"
               onClick={() => setModalOpen(true)}
             >
@@ -108,9 +112,14 @@ const WorksCard = (props: Props) => {
   );
 };
 
-export const Works = () => {
+export const Works: FC<WorksProps> = (props) => {
+  const { worksRef } = props;
+
   return (
-    <div className="text-center bg-body py-4">
+    <div
+      className="text-center bg-body py-4"
+      ref={worksRef}
+    >
       <div className="mx-auto" style={{ width: '70%' }}>
         <div className="fs-1 fw-bold">Works</div>
         <div className="fs-5">作品など</div>

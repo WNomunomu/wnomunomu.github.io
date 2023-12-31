@@ -1,10 +1,15 @@
 import { FC } from 'react';
+import { MutableRefObject } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-type Props = {
+type SkillCardProps = {
   title?: string
   icon?: string
+}
+
+type SkillSetProps = {
+  mySkillSetRef: MutableRefObject<HTMLDivElement | null>
 }
 
 const skillSet = [
@@ -75,7 +80,7 @@ const skillSet = [
   },
 ]
 
-const SkillCard: FC<Props> = (props) => {
+const SkillCard: FC<SkillCardProps> = (props) => {
   const { title, icon } = props;
 
   return (
@@ -87,9 +92,15 @@ const SkillCard: FC<Props> = (props) => {
 
 };
 
-export const MySkillSet = () => {
+export const MySkillSet: FC<SkillSetProps> = (props) => {
+
+  const { mySkillSetRef } = props;
+
   return (
-    <div className="text-center py-5 bg-body-secondary d-flex align-items-center justify-content-center">
+    <div
+      className="text-center py-5 bg-body-secondary d-flex align-items-center justify-content-center"
+      ref={mySkillSetRef}
+    >
       <div className="mx-auto" style={{ width: '70%' }}>
         <div className="fs-1 fw-bold">My skill set</div>
         <div className="fs-5">実際に開発に使用したことのある技術をまとめてみました。</div>

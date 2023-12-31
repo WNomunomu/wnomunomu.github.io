@@ -1,10 +1,22 @@
+import { FC } from 'react';
+import type { MutableRefObject } from 'react';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './indexPage.module.css'
 
+type Props = {
+  aboutMeRef: MutableRefObject<HTMLDivElement | null>
+}
 
-export const AboutMe = () => {
+export const AboutMe: FC<Props> = (props) => {
+  
+  const { aboutMeRef } = props;
+
   return (
-    <div className="vh-100 bg-body-secondary d-flex align-items-center justify-content-center">
+    <div
+      className="vh-100 bg-body-secondary d-flex align-items-center justify-content-center"
+      ref={aboutMeRef}
+    >
       <div className='content'>
         <div className="fs-1 fw-bold text-center">About me</div>
         <div className="row mx-auto col-md-6">

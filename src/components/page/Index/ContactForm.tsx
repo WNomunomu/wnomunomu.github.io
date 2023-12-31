@@ -35,7 +35,7 @@ export const ContactForm = () => {
           <textarea className="form-control" rows={3} placeholder="Comment" name="comment"></textarea>
         </div>
         <div className="d-flex justify-content-center">
-          <button className={`${styles['button']} fs-5 text-light border-0 py-2 px-4 rounded`} type="submit">Send</button>
+          <button className='button fs-5 text-light border-0 py-2 px-4 rounded' type="submit">Send</button>
         </div>
       </form>
     </>

@@ -23,7 +23,7 @@ export const Typewriter: FC<Props> = (props) => {
   return (
     <span>
       {text.substring(0, currentIndex)}
-      <span className={styles.cursor}>{' ▎'}</span>
+      <span className={styles.cursor}>{' |'}</span>
     </span>
   )
 

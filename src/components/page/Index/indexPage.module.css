@@ -1,11 +1,3 @@
-.top-banner {
-  background-color: rgb(144, 202, 249);
-  height: calc(100vh);
-  min-height: 400px;
-  /* clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%); */
-}
-
 .about-this-site {
   /* clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%); */
@@ -21,17 +13,4 @@
 
 .button:hover {
   background-color: rgb(144, 202, 249);
-}
-
-.scroll-down {
-  animation: floating-y 1.8s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes floating-y {
-  0% {
-    transform: translateY(-10%);
-  }
-  100% {
-    transform: translateY(10%);
-  }
 }
