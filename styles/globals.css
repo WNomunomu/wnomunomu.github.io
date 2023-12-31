@@ -1,5 +1,10 @@
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+html {
+  line-height: 1.5;
 }
 
 .button {

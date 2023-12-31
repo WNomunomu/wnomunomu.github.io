@@ -1,25 +1,41 @@
 .cursor {
-  animation: blinkingText 1s infinite;
+    animation: blinkingText 1s infinite;
+}
+    
+.typewriter-text {
+    font-size: 3rem;
+}
+    
+@media (max-width: 768px) {
+    .typewriter-text {
+        font-size: 3rem;
+    }
+}
+    
+@media (max-width: 480px) {
+    .typewriter-text {
+        font-size: 2rem;
+    }
 }
 
 @keyframes blinkingText {
-  0% {
-      opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
 
-  49% {
-      opacity: 1;
-  }
+    49% {
+        opacity: 1;
+    }
 
-  60% {
-      opacity: 0;
-  }
+    60% {
+        opacity: 0;
+    }
 
-  99% {
-      opacity: 0;
-  }
+    99% {
+        opacity: 0;
+    }
 
-  100% {
-      opacity: 1;
-  }
+    100% {
+        opacity: 1;
+    }
 }

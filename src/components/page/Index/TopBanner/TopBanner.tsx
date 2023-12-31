@@ -26,7 +26,7 @@ export const TopBanner: FC<Props> = (props) => {
       ref={topBannerRef}
     >
       <div className="text-center w-75">
-        <div className='fw-bold mx-auto' style={{ fontSize: '4.0rem' }}>
+        <div className='fw-bold mx-auto'>
           <Typewriter
             text="Welcome to Nomu's portfolio!"
             speed={100}
