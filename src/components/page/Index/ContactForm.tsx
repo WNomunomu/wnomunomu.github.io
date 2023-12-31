@@ -21,12 +21,12 @@ export const ContactForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-2">
           <div className="row">
-            <div className="col-md-6">
+            <div className="mt-2 col-md-6">
               <input type="name" className="form-control" placeholder="Name" name="name" />
             </div>
-            <div className="col-md-6">
+            <div className="mt-2 col-md-6">
               <input type="email" className="form-control" placeholder="Email" name="email" />
             </div>
           </div>

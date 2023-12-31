@@ -84,7 +84,7 @@ const SkillCard: FC<SkillCardProps> = (props) => {
   const { title, icon } = props;
 
   return (
-    <div className="col-2 p-3">
+    <div className="col-lg-2 col-sm-3 col-3 p-3">
       <i className={`${icon}`} style={{ fontSize: '70px' }} />
       <div className="fs-5">{title}</div>
     </div>

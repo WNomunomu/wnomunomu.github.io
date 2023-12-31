@@ -84,7 +84,7 @@ const WorksCard = (props: WorksCardProps) => {
 
   return (
     <>
-      <div className="col-md-4 my-4">
+      <div className="col-lg-4 col-md-6 my-4">
         <div className="card">
           <img src={mainImage} className="card-img-top" alt="..." />
           <div className="card-body">

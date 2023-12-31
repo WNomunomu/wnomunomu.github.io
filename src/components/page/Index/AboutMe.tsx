@@ -19,11 +19,11 @@ export const AboutMe: FC<Props> = (props) => {
     >
       <div className='content'>
         <div className="fs-1 fw-bold text-center">About me</div>
-        <div className="row mx-auto col-md-6">
-          <div className="col-md-4 py-2">
+        <div className="row mx-auto col-lg-6 col-sm-8 col-8">
+          <div className="col-lg-4 py-2">
             <img className="img-thumbnail" src='profile_icon.jpg' alt="Profile" />
           </div>
-          <div className="col-md-8 py-2">  
+          <div className="col-lg-8 py-2">  
             <div className="fs-5">
               <div>
                 ソフトウェアエンジニア。

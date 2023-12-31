@@ -1,8 +1,5 @@
-import { FC } from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 import type { MutableRefObject } from 'react';
-
-import { AppBar, Toolbar, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Drawer, IconButton, Button } from '@mui/material';
-import { Menu } from '@mui/icons-material';
 
 export type Props = {
   topBannerRef: MutableRefObject<HTMLDivElement | null>
@@ -13,8 +10,6 @@ export type Props = {
   contactMeRef: MutableRefObject<HTMLDivElement | null>
 }
 
-const drawerWidth = 240;
-
 export const scrollToComponent = (ref: MutableRefObject<HTMLDivElement | null>) => {
   if (ref.current == null) {
     return;
@@ -23,86 +18,6 @@ export const scrollToComponent = (ref: MutableRefObject<HTMLDivElement | null>) 
   ref.current.scrollIntoView();
 }
 
-// export const ResponsiveAppBar = (props: Props) => {
-
-//   const { window } = props;
-
-//   const [mobileOpen, setMobileOpen] = useState(false);
-
-//   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
-
-//   const drawer = (
-//     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-//       <List>
-//         {navItems.map((item, index) => (
-//           <ListItem key={index} disablePadding>
-//             <ListItemButton sx={{ textAlign: 'center' }}>
-//               <ListItemText primary={item.title} />
-//             </ListItemButton>
-//           </ListItem>
-//         ))}
-//       </List>
-//     </Box>
-//   );
-
-//   const container = window !== undefined ? () => window().document.body : undefined;
-
-//   return (
-//     <>
-//       <AppBar component="nav" position="sticky" color='default'>
-//         <Toolbar sx={{ width: { xs: '80%', sm: '70%' }, margin: '0 auto'}}>
-//           <IconButton
-//             aria-label="open drawer"
-//             edge="start"
-//             onClick={handleDrawerToggle}
-//             sx={{ mr: 2, display: { sm: 'none' }, float: 'left' }}
-//           >
-//             <Menu />
-//           </IconButton>
-//           <Typography
-//             variant="h6"
-//             component="div"
-//             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-//           >
-//             Desktop
-//           </Typography>
-//           <Typography
-//             variant="h6"
-//             component="div"
-//             sx={{ display: { xs: 'inline-block', sm: 'none' }, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
-//           >
-//             Mobile
-//           </Typography>
-//           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-//             {navItems.map((item, index) => (
-//               <Button key={index} sx={{ color: '#000' }}>
-//                 {item.title}
-//               </Button>
-//             ))}
-//           </Box>
-//         </Toolbar>
-//       </AppBar>
-//       <nav>
-//         <Drawer
-//           container={container}
-//           variant="temporary"
-//           open={mobileOpen}
-//           onClose={handleDrawerToggle}
-//           ModalProps={{
-//             keepMounted: true, // Better open performance on mobile.
-//           }}
-//           sx={{
-//             display: { xs: 'block', sm: 'none' },
-//             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-//           }}
-//         >
-//           {drawer}
-//         </Drawer>
-//       </nav>
-//     </>
-//   );
-// };
-
 
 export const ResponsiveAppBar: FC<Props> = (props) => {
 
@@ -110,29 +25,75 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
     topBannerRef, aboutThisSiteRef, aboutMeRef, worksRef, mySkillSetRef, contactMeRef,
   } = props;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const navItems = [
-    {title: 'Top', ref: topBannerRef},
-    {title: 'About this site', ref: aboutThisSiteRef},
-    {title: 'About me', ref: aboutMeRef},
-    {title: 'Works', ref: worksRef},
-    {title: 'SkillSet', ref: mySkillSetRef},
-    {title: 'Contact me', ref: contactMeRef},
+    { title: 'Top', ref: topBannerRef },
+    { title: 'About this site', ref: aboutThisSiteRef },
+    { title: 'About me', ref: aboutMeRef },
+    { title: 'Works', ref: worksRef },
+    { title: 'SkillSet', ref: mySkillSetRef },
+    { title: 'Contact me', ref: contactMeRef },
   ]
 
   return (
     <>
-      <div className="fixed-top">
-        <div className="mx-auto row" style={{ width: '70%' }}>
-          <div className="col-6">
-            <div className="d-inline-block p-3"></div>
-          </div>
-          <div className="col-6">
+      {/* <div id="pc">
+        <div className="fixed-top">
+          <div className="mx-auto" style={{ width: '70%' }}>
             <div className="d-flex flex-row justify-content-end">
               {navItems.map((items, index) => (
                 <div className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}>
                   <div onClick={() => scrollToComponent(items.ref)}>{items.title}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      <div id="sm">
+        <div className="fixed-top">
+          <div className="mx-auto" style={{ width: '80%' }}>
+            <div className="">
+              <span
+                className="material-symbols-outlined text-light p-3 fs-2"
+                onClick={() => setIsOpen(true)}
+                style={{ cursor: 'pointer' }}
+              >
+                menu
+              </span>
+              { isOpen && (
+                <div
+                  className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 w-25 p-3"
+                  ref={menuRef}
+                >
+                  {navItems.map((items, index) => (
+                    <div
+                      className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}
+                      onClick={() => scrollToComponent(items.ref)}
+                    >
+                      {items.title}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
