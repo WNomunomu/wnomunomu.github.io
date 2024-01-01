@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 import { WorksCarousel } from './WorksCarousel';
 
@@ -23,7 +23,7 @@ export const WorksModal: FC<Props> = (props) => {
       <ModalBody>
         <WorksCarousel images={images} />
         <div className="mt-3">{text}</div>
-        <div className="mt-3">使用言語など</div>
+        <div className="mt-3">使用言語・技術</div>  
         <ul>
           {tech.map((tech, index) => <li key={index}>{tech}</li>)}
         </ul>

@@ -23,56 +23,30 @@ type WorksProps = {
 
 const works: Work[] = [
   {
-    mainImage: '/works/Marronnier/第二次GPA資料/スライド1.jpg',
+    mainImage: '/works/Marronnier/picture1.jpg',
     images: [
-      '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド8.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド10.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド11.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド16.jpg',
+      '/works/Marronnier/picture1.jpg',
+      '/works/Marronnier/picture2.jpg',
+      '/works/Marronnier/picture3.jpg',
+      '/works/Marronnier/picture4.jpg',
+      '/works/Marronnier/picture5.jpg',
     ],
     title: '蛟龍祭入場管理システムMarronnier',
-    text: '県立前橋高校在学中に開発した文化祭入場管理システム。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできる。',
-    tech: ['HTML・CSS', 'JS', 'Python・Django', 'MySQL', 'GCP']
+    text: '県立前橋高校在学中に開発した文化祭入場管理システムです。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできます。文化祭当日は合計4000人以上の入場管理を行いました。',
+    tech: ['HTML・CSS', 'JS', 'Python', 'Django', 'MySQL', 'GoogleCloud']
   },
   {
-    mainImage: '/works/Marronnier/第二次GPA資料/スライド1.jpg',
+    mainImage: '/works/Portfolio/picture1.jpg',
     images: [
-      '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド8.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド10.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド11.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド16.jpg',
+      '/works/Portfolio/picture1.jpg',
+      // '/works/Portfolio/picture2.jpg',
+      // '/works/Portfolio/picture3.jpg',
+      // '/works/Portfolio/picture4.jpg',
+      // '/works/Portfolio/picture5.jpg',
     ],
-    title: '蛟龍祭入場管理システムMarronnier',
-    text: '県立前橋高校在学中に開発した文化祭入場管理システム。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできる。',
-    tech: ['HTML・CSS', 'JS', 'Python・Django', 'MySQL', 'GCP']
-  },
-  {
-    mainImage: '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-    images: [
-      '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド8.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド10.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド11.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド16.jpg',
-    ],
-    title: '蛟龍祭入場管理システムMarronnier',
-    text: '県立前橋高校在学中に開発した文化祭入場管理システム。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできる。',
-    tech: ['HTML・CSS', 'JS', 'Python・Django', 'MySQL', 'GCP']
-  },
-  {
-    mainImage: '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-    images: [
-      '/works/Marronnier/第二次GPA資料/スライド1.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド8.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド10.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド11.jpg',
-      '/works/Marronnier/第二次GPA資料/スライド16.jpg',
-    ],
-    title: '蛟龍祭入場管理システムMarronnier',
-    text: '県立前橋高校在学中に開発した文化祭入場管理システム。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできる。',
-    tech: ['HTML・CSS', 'JS', 'Python・Django', 'MySQL', 'GCP']
+    title: "Nomu's portfolio",
+    text: 'このホームページです。Next.jsを用いて、レスポンシブな動的で使いやすいサイトに仕上げました。GitHub Pagesを用いて公開しています。CSSアニメーションを用いて作成したトップバナーの歯車のアニメーションが自慢です。',
+    tech: ['HTML・CSS', 'JS', 'React', 'Next.js', 'Git']
   },
 ];
 
@@ -85,12 +59,14 @@ const WorksCard = (props: WorksCardProps) => {
   return (
     <>
       <div className="col-lg-4 col-md-6 my-4">
-        <div className="card position-static">
-          <img src={mainImage} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">{title}</h5>
+        <div className="card position-static h-100">
+          <div className="h-75">
+            <img src={mainImage} className="card-img-top" alt={mainImage} />
+          </div>
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title flex-grow-1">{title}</h5>
             <button
-              className='button fs-6 text-light border-0 py-2 px-3 rounded'
+              className='button fs-6 text-light border-0 py-2 px-3 rounded align-items-end mx-auto'
               type="button"
               onClick={() => setModalOpen(true)}
             >
