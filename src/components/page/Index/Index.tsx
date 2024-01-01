@@ -9,8 +9,6 @@ import { MySkillSet } from './MySkillSet';
 import { ContactMe } from './ContactMe';
 import { Footer } from './Footer';
 
-import styles from './indexPage.module.css'
-
 export const Index = () => {
 
   const topBannerRef = useRef<null | HTMLDivElement>(null);

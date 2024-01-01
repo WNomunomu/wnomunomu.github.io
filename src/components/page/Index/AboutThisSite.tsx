@@ -16,7 +16,7 @@ export const AboutThisSite: FC<Props> = (props) => {
       className="text-center vh-100 bg-body d-flex align-items-center justify-content-center"
       ref={aboutThisSiteRef}
     >
-      <div className='mx-auto col-lg-6 col-sm-8 col-8'>
+      <div className='mx-auto col-10 col-sm-10 col-md-8 col-xl-6'>
         <div className="fs-1 fw-bold">About this site</div>
         <div className="fs-5">
           <div>ここはエンジニアNomuのポートフォリオサイトです。</div>

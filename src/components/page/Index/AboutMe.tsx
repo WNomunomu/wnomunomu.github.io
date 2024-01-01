@@ -17,9 +17,9 @@ export const AboutMe: FC<Props> = (props) => {
       className="vh-100 bg-body-secondary d-flex align-items-center justify-content-center"
       ref={aboutMeRef}
     >
-      <div className='content'>
+      <div className='col-10 col-sm-10 col-md-8 col-xl-6'>
         <div className="fs-1 fw-bold text-center">About me</div>
-        <div className="row mx-auto col-lg-6 col-sm-8 col-8">
+        <div className="row mx-auto">
           <div className="col-lg-4 py-2">
             <img className="img-thumbnail" src='profile_icon.jpg' alt="Profile" />
           </div>
