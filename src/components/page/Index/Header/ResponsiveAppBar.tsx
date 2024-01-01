@@ -1,6 +1,11 @@
 import { FC, useState, useRef, useEffect } from 'react';
 import type { MutableRefObject } from 'react';
 
+import { useHeaderScroll } from './responsive-app-bar-utils';
+import { useMediaQuery } from 'react-responsive';
+
+import styles from './ResponsiveAppBar.module.css'
+
 export type Props = {
   topBannerRef: MutableRefObject<HTMLDivElement | null>
   aboutThisSiteRef: MutableRefObject<HTMLDivElement | null>
@@ -8,6 +13,16 @@ export type Props = {
   worksRef: MutableRefObject<HTMLDivElement | null>
   mySkillSetRef: MutableRefObject<HTMLDivElement | null>
   contactMeRef: MutableRefObject<HTMLDivElement | null>
+}
+
+type navItemsType = {
+  title: string;
+  ref: MutableRefObject<HTMLDivElement | null>;
+}
+
+type AppBarProps = {
+  navItems: navItemsType[]
+  headerStyle: string
 }
 
 export const scrollToComponent = (ref: MutableRefObject<HTMLDivElement | null>) => {
@@ -18,15 +33,26 @@ export const scrollToComponent = (ref: MutableRefObject<HTMLDivElement | null>) 
   ref.current.scrollIntoView();
 }
 
+const DesktopAppBar: FC<AppBarProps> = (props) => {
+  const { navItems, headerStyle } = props;
 
-export const ResponsiveAppBar: FC<Props> = (props) => {
+  return (
+    <div className={`${headerStyle} text-light w-100`}>
+      <div className="d-flex flex-row justify-content-end justify-content-center">
+        {navItems.map((items, index) => (
+          <div className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}>
+            <div onClick={() => scrollToComponent(items.ref)}>{items.title}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-  const {
-    topBannerRef, aboutThisSiteRef, aboutMeRef, worksRef, mySkillSetRef, contactMeRef,
-  } = props;
+const MobileAppBar: FC<AppBarProps> = (props) => {
+  const { navItems, headerStyle } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -43,6 +69,49 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
     };
   }, []);
 
+  return (
+    <div className={headerStyle}>
+      <div className="mx-auto">
+        <span
+          className="material-symbols-outlined text-light p-3 col-2"
+          onClick={() => setIsOpen(true)}
+          style={{ cursor: 'pointer', fontSize: '2rem' }}
+        >
+          menu
+        </span>
+        {isOpen && (
+          <div
+            className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 p-3"
+            ref={menuRef}
+          >
+            {navItems.map((items, index) => (
+              <div
+                className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}
+                onClick={() => scrollToComponent(items.ref)}
+              >
+                {items.title}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+
+
+export const ResponsiveAppBar: FC<Props> = (props) => {
+
+  const {
+    topBannerRef, aboutThisSiteRef, aboutMeRef, worksRef, mySkillSetRef, contactMeRef,
+  } = props;
+
+  const isDesktop: boolean = useMediaQuery({ query: '(min-width: 768px)' })
+  const isHeaderDefault = useHeaderScroll();
+
+  const headerStyle = isHeaderDefault ? styles['header-default'] : styles['header-fixed'];
+
   const navItems = [
     { title: 'Top', ref: topBannerRef },
     { title: 'About this site', ref: aboutThisSiteRef },
@@ -54,50 +123,18 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
 
   return (
     <>
-      {/* <div id="pc">
-        <div className="fixed-top">
-          <div className="mx-auto" style={{ width: '70%' }}>
-            <div className="d-flex flex-row justify-content-end">
-              {navItems.map((items, index) => (
-                <div className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}>
-                  <div onClick={() => scrollToComponent(items.ref)}>{items.title}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      <div id="sm">
-        <div className="fixed-top">
-          <div className="row">
-            <div className="mx-auto">
-              <span
-                className="material-symbols-outlined text-light p-3 col-2"
-                onClick={() => setIsOpen(true)}
-                style={{ cursor: 'pointer', fontSize: '2rem'}}
-              >
-                menu
-              </span>
-              { isOpen && (
-                <div
-                  className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 p-3"
-                  ref={menuRef}
-                >
-                  {navItems.map((items, index) => (
-                    <div
-                      className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}
-                      onClick={() => scrollToComponent(items.ref)}
-                    >
-                      {items.title}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      { isDesktop
+        ?
+          <DesktopAppBar
+            navItems={navItems}
+            headerStyle={headerStyle}
+          />
+        :
+          <MobileAppBar
+            navItems={navItems}
+            headerStyle={headerStyle}
+          />
+      }
     </>
   );
 };

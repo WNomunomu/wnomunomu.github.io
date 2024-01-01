@@ -1,0 +1,10 @@
+.header-default {
+  position: absolute;
+}
+
+.header-fixed {
+  transition: background-color 0.5s ease;
+  position: fixed;
+  background-color: rgb(144, 202, 249);
+  width: 100%;
+}

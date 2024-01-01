@@ -85,7 +85,7 @@ const WorksCard = (props: WorksCardProps) => {
   return (
     <>
       <div className="col-lg-4 col-md-6 my-4">
-        <div className="card">
+        <div className="card position-static">
           <img src={mainImage} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
