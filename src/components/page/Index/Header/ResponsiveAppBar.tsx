@@ -2,7 +2,7 @@ import { FC, useState, useRef, useEffect } from 'react';
 import type { MutableRefObject } from 'react';
 
 import { useHeaderScroll } from './responsive-app-bar-utils';
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from './responsive-app-bar-utils';
 
 import styles from './ResponsiveAppBar.module.css'
 
@@ -40,8 +40,13 @@ const DesktopAppBar: FC<AppBarProps> = (props) => {
     <div className={`${headerStyle} text-light w-100`}>
       <div className="d-flex flex-row justify-content-end justify-content-center">
         {navItems.map((items, index) => (
-          <div className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}>
-            <div onClick={() => scrollToComponent(items.ref)}>{items.title}</div>
+          <div
+            className="p-3 fs-5"
+            key={index}
+            style={{ cursor: 'pointer' }}
+            onClick={() => scrollToComponent(items.ref)}
+          >
+            <div>{items.title}</div>
           </div>
         ))}
       </div>
@@ -81,7 +86,7 @@ const MobileAppBar: FC<AppBarProps> = (props) => {
         </span>
         {isOpen && (
           <div
-            className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 p-3"
+            className="d-inline-block position-absolute top-0 start-0 bg-light vh-100 p-3 z-1"
             ref={menuRef}
           >
             {navItems.map((items, index) => (
@@ -107,7 +112,7 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
     topBannerRef, aboutThisSiteRef, aboutMeRef, worksRef, mySkillSetRef, contactMeRef,
   } = props;
 
-  const isDesktop: boolean = useMediaQuery({ query: '(min-width: 768px)' })
+  const isDesktop: boolean = useMediaQuery('(min-width: 768px)')
   const isHeaderDefault = useHeaderScroll();
 
   const headerStyle = isHeaderDefault ? styles['header-default'] : styles['header-fixed'];
