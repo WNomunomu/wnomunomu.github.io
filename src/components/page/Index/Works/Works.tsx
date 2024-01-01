@@ -39,13 +39,12 @@ const works: Work[] = [
     mainImage: '/works/Portfolio/picture1.jpg',
     images: [
       '/works/Portfolio/picture1.jpg',
-      // '/works/Portfolio/picture2.jpg',
-      // '/works/Portfolio/picture3.jpg',
-      // '/works/Portfolio/picture4.jpg',
-      // '/works/Portfolio/picture5.jpg',
+      '/works/Portfolio/picture2.jpg',
+      '/works/Portfolio/picture3.jpg',
+      '/works/Portfolio/picture4.jpg',
     ],
     title: "Nomu's portfolio",
-    text: 'このホームページです。Next.jsを用いて、レスポンシブな動的で使いやすいサイトに仕上げました。GitHub Pagesを用いて公開しています。CSSアニメーションを用いて作成したトップバナーの歯車のアニメーションが自慢です。',
+    text: 'このホームページです。Next.jsを用いて、レスポンシブで動的な楽しいサイトに仕上げました。GitHub Pagesを用いて公開しています。CSSアニメーションを用いて作成したトップバナーの歯車のアニメーションがちょっとした自慢です。',
     tech: ['HTML・CSS', 'JS', 'React', 'Next.js', 'Git']
   },
 ];
@@ -93,10 +92,10 @@ export const Works: FC<WorksProps> = (props) => {
 
   return (
     <div
-      className="text-center bg-body py-4"
+      className="text-center bg-body py-5"
       ref={worksRef}
     >
-      <div className="mx-auto" style={{ width: '70%' }}>
+      <div className="mx-auto w-75">
         <div className="fs-1 fw-bold">Works</div>
         <div className="fs-5">作品など</div>
         <div className="row">
