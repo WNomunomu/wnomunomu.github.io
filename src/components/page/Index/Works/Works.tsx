@@ -97,7 +97,7 @@ export const Works: FC<WorksProps> = (props) => {
     >
       <div className="mx-auto w-75">
         <div className="fs-1 fw-bold">Works</div>
-        <div className="fs-5">作品など</div>
+        <div className="fs-5">こだわりの制作物を紹介します。ぜひご覧になってください。</div>
         <div className="row">
           {works.map((work, index) => <WorksCard key={index} work={work} />)}
         </div>
