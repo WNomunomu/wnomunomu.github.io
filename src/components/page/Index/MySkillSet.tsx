@@ -104,6 +104,7 @@ export const MySkillSet: FC<SkillSetProps> = (props) => {
       <div className="mx-auto" style={{ width: '70%' }}>
         <div className="fs-1 fw-bold">My skill set</div>
         <div className="fs-5">実際に開発に使用したことのある技術をまとめてみました。</div>
+        <div className='fs-5'>これからもっと増える予定です！</div>
         <div className="pt-3">
           <div className="fs-5">Language</div>
           <div className="row d-flex justify-content-center">

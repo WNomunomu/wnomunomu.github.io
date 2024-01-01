@@ -21,7 +21,11 @@ export const ContactMe: FC<Props> = (props) => {
       <div className="mx-auto col-10 col-sm-10 col-md-8 col-xl-6">
         <div className="fs-1 fw-bold text-center">Contact me</div>
         <div className="fs-5 mb-4">
-          <div>最後までご覧いただきありがとうございました。このサイトを通して、私のことを少しでも知っていただけたのなら嬉しいです。もしこのサイトや私について何かコメントがありましたら、下記フォームをご利用ください。</div>
+          <div>
+            このサイトを最後までご覧いただき、誠にありがとうございました。
+            少しでも私について知っていただけたなら嬉しいです。
+            何かコメントや感想がありましたら、ぜひ下記フォームからお知らせください。
+          </div>
         </div>
         <ContactForm />
       </div>

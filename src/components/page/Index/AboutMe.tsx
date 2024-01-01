@@ -25,12 +25,9 @@ export const AboutMe: FC<Props> = (props) => {
           </div>
           <div className="col-lg-8 py-2">  
             <div className="fs-5">
-              <div>
-                ソフトウェアエンジニア。
-                中学、高校でプログラミングにハマり、現在は早稲田大学に在学。
-                機械工学を専攻しながら、駆け出しエンジニアとして修業中。
-                最近は主にフロントエンドの開発をしています。
-              </div>
+              <div className="fs-2">Nomu</div>
+              <div className='fs-4'>ソフトウェアエンジニア</div>
+              <div className='fs-5'>Minecraftのコマンドをきっかけにプログラミングに沼る。主にTypeScriptを書いている。趣味は音楽と旅行。根っからの理系だが、最近になって文系に憧れ始めている。</div>
               <div className="d-flex align-items-center py-4">
                 <i style={{ fontSize: '40px' }} className="devicon-github-original colored pe-2" />
                 <a className="link-underline link-underline-opacity-0" href="https://github.com/WNomunomu" target="_blank">GitHub</a>
