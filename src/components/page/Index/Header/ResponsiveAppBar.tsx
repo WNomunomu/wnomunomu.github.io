@@ -70,12 +70,12 @@ export const ResponsiveAppBar: FC<Props> = (props) => {
 
       <div id="sm">
         <div className="fixed-top">
-          <div className="mx-auto" style={{ width: '80%' }}>
-            <div className="">
+          <div className="row">
+            <div className="mx-auto">
               <span
-                className="material-symbols-outlined text-light p-3 fs-2"
+                className="material-symbols-outlined text-light p-3 col-2"
                 onClick={() => setIsOpen(true)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', fontSize: '2rem'}}
               >
                 menu
               </span>
