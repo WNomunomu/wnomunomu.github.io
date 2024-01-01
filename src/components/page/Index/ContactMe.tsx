@@ -15,7 +15,7 @@ export const ContactMe: FC<Props> = (props) => {
 
   return (
     <div
-      className="vh-100 bg-body d-flex align-items-center justify-content-center row"
+      className="vh-100 bg-body d-flex align-items-center justify-content-center"
       ref={contactMeRef}
     >
       <div className="mx-auto col-10 col-sm-10 col-md-8 col-xl-6">
