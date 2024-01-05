@@ -33,7 +33,7 @@ const works: Work[] = [
       '/works/Marronnier/picture5.jpg',
     ],
     title: '蛟龍祭入場管理システムMarronnier',
-    text: '県立前橋高校在学中に開発した文化祭入場管理システムです。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできます。文化祭当日は合計4000人以上の入場管理を行いました。',
+    text: '県立前橋高校在学中に開発した文化祭入場管理システムです。入場管理だけでなく、チケットの生成やリアルタイムに会場内の人数から混雑状況を計算し地図に表示することもできます。文化祭当日は合計4000人以上の入場管理を行いました。',
     githubLink: 'https://github.com/WNomunomu/koryo_fes_system',
     tech: ['HTML', 'CSS', 'JavaScript', 'Python', 'Django', 'MySQL', 'GoogleCloud'],
   },
