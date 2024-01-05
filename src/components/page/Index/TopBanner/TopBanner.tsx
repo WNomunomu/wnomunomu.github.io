@@ -36,7 +36,7 @@ export const TopBanner: FC<Props> = (props) => {
           <Gear />
         </div>
         <span
-          className={`material-symbols-outlined mt-5 ${styles['scroll-down']}`}
+          className={`material-symbols-outlined mt-5 user-select-none ${styles['scroll-down']}`}
           style={{ fontSize: '100px', cursor: 'pointer' }}
           onClick={() => scrollToComponent(aboutThisSiteRef)}
         >
