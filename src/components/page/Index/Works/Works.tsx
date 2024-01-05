@@ -11,6 +11,7 @@ type Work = {
   title: string,
   text: string,
   tech: string[],
+  githubLink: string,
 }
 
 type WorksCardProps = {
@@ -33,7 +34,8 @@ const works: Work[] = [
     ],
     title: '蛟龍祭入場管理システムMarronnier',
     text: '県立前橋高校在学中に開発した文化祭入場管理システムです。入場管理だけでなく、チケットの生成や会場内の混雑状況を計算し地図に表示することもできます。文化祭当日は合計4000人以上の入場管理を行いました。',
-    tech: ['HTML・CSS', 'JS', 'Python', 'Django', 'MySQL', 'GoogleCloud']
+    githubLink: 'https://github.com/WNomunomu/koryo_fes_system',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Python', 'Django', 'MySQL', 'GoogleCloud'],
   },
   {
     mainImage: '/works/Portfolio/picture1.jpg',
@@ -45,7 +47,8 @@ const works: Work[] = [
     ],
     title: "Nomu's portfolio",
     text: 'このホームページです。Next.jsを用いて、レスポンシブで動的な楽しいサイトに仕上げました。GitHub Pagesを用いて公開しています。CSSアニメーションを用いて作成したトップバナーの歯車のアニメーションがちょっとした自慢です。',
-    tech: ['HTML・CSS', 'JS', 'React', 'Next.js', 'Git']
+    githubLink: 'https://github.com/WNomunomu/wnomunomu.github.io',
+    tech: ['CSS', 'TypeScript', 'React', 'Next.js', 'Git'],
   },
 ];
 
@@ -53,7 +56,7 @@ const WorksCard = (props: WorksCardProps) => {
 
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const { mainImage, images, title, text, tech } = props.work;
+  const { mainImage, images, title, text, tech, githubLink } = props.work;
 
   return (
     <>
@@ -79,6 +82,7 @@ const WorksCard = (props: WorksCardProps) => {
             title={title}
             text={text}
             tech={tech}
+            githubLink={githubLink}
             setModalOpen={setModalOpen}
           />
         }
