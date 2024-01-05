@@ -20,9 +20,8 @@ export const AboutThisSite: FC<Props> = (props) => {
         <div className="fs-1 fw-bold">About this site</div>
         <div className="fs-5">
           <div>エンジニアNomuのポートフォリオサイトへようこそ。</div>
-          <div>ここでは、私がこれまでに手がけた制作物や</div>
-          <div>身につけたスキルを紹介しています。</div>
-          <div>お茶を片手に、どうぞごゆっくりとサイト内をご覧ください。</div>
+          <div>ここでは、私がこれまでに手がけた制作物や身につけたスキルを紹介しています。</div>
+          <div>どうぞごゆっくりとサイト内をご覧ください。</div>
         </div>
       </div>
     </div>

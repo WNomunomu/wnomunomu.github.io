@@ -6,7 +6,7 @@ export const Footer = () => {
           <div>Thank you for coming!</div>
         </div>
         <div className="fs-6 p-3" style={{ backgroundColor: 'rgb(100, 181, 246)' }}>
-          <div className="mx-auto" style={{ width: '70%' }}>@2024 Kohsei Nomura</div>
+          <div>©2024 Kohsei Nomura</div>
         </div>
       </div>
     </>
