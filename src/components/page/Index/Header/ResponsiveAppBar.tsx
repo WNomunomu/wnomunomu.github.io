@@ -41,7 +41,7 @@ const DesktopAppBar: FC<AppBarProps> = (props) => {
       <div className="d-flex flex-row justify-content-end justify-content-center">
         {navItems.map((items, index) => (
           <div
-            className="p-3 fs-5"
+            className="p-3 fs-5 user-select-none"
             key={index}
             style={{ cursor: 'pointer' }}
             onClick={() => scrollToComponent(items.ref)}
@@ -91,7 +91,7 @@ const MobileAppBar: FC<AppBarProps> = (props) => {
           >
             {navItems.map((items, index) => (
               <div
-                className="p-3 fs-5" key={index} style={{ cursor: 'pointer' }}
+                className="p-3 fs-5 user-select-none" key={index} style={{ cursor: 'pointer' }}
                 onClick={() => scrollToComponent(items.ref)}
               >
                 {items.title}
